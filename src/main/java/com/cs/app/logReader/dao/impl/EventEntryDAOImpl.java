@@ -1,7 +1,9 @@
 package com.cs.app.logReader.dao.impl;
 
 import java.sql.Connection;
+import java.sql.DatabaseMetaData;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
@@ -39,16 +41,14 @@ public class EventEntryDAOImpl implements EventEntryDAO {
 		// Create a statement object
 				Statement stat = conn.createStatement();
 				PreparedStatement prep = null;
-				// Try to drop the table
-				try {
-					stat.executeUpdate("DROP TABLE EventEntries");
-				} catch (SQLException e) {
-					logger.error("Error while dropping table", e);
-				}
 				String sql = "CREATE TABLE EVENTENTRIES (id varchar(255), "
 						+ " type varchar(255), host varchar(255), eventduration bigint,"
 						+ " alert varchar(10), primary key(id));";
-				stat.executeUpdate(sql);
+				if(!tableExists("EVENTENTRIES",conn)){
+					logger.info("In class EventEntryDAOImpl :: method fillFileEvents :: Need to create table");
+					stat.executeUpdate(sql);
+				}
+				
 				// Close the Statement object, it is no longer used
 				stat.close();
 				for (EventEntries eventEntry : listEventEntries) {
@@ -68,5 +68,19 @@ public class EventEntryDAOImpl implements EventEntryDAO {
 					prep.close();
 				}
 				logger.info("Data inserted succcessfully");
+	}
+
+	private boolean tableExists(String tableName, Connection conn) throws SQLException {
+		boolean found = false;
+	    DatabaseMetaData databaseMetaData = conn.getMetaData();
+	    ResultSet rs = databaseMetaData.getTables(null, null, tableName, null);
+	    while (rs.next()) {
+	        String name = rs.getString("TABLE_NAME");
+	        if (tableName.equals(name)) {
+	            found = true;
+	            break;
+	        }
+	    }
+	    return found;
 	}
 }
