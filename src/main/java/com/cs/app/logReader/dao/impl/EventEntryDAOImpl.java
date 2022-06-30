@@ -37,37 +37,40 @@ public class EventEntryDAOImpl implements EventEntryDAO {
 		}
 	}
 
+	public void selectAll(Connection conn) throws SQLException {
+        String getAll = "SELECT id, alert FROM EVENTENTRIES";
+        logger.debug("Retrieving all DB entries in < EVENTENTRIES > table.");
+        ResultSet resultSet = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY).executeQuery(getAll);
+        while (resultSet.next()) {
+            logger.info("Alert value for EventID <" + resultSet.getString("id") + "> is :: " + resultSet.getString("alert"));
+        }
+    }
+	
 	private void fillFileEvents(Connection conn, List<EventEntries> listEventEntries) throws SQLException {
 		// Create a statement object
-				Statement stat = conn.createStatement();
-				PreparedStatement prep = null;
-				String sql = "CREATE TABLE EVENTENTRIES (id varchar(255), "
-						+ " type varchar(255), host varchar(255), eventduration bigint,"
-						+ " alert varchar(10), primary key(id));";
-				if(!tableExists("EVENTENTRIES",conn)){
-					logger.info("In class EventEntryDAOImpl :: method fillFileEvents :: Need to create table");
-					stat.executeUpdate(sql);
-				}
-				
-				// Close the Statement object, it is no longer used
-				stat.close();
-				for (EventEntries eventEntry : listEventEntries) {
-					String values = "VALUES ('" 
-							+ eventEntry.getId()
-							+ "', '"
-							+ (eventEntry.getType() != null ? eventEntry.getType()
-									: "")
-							+ "','"
-							+ (eventEntry.getHost() != null ? eventEntry.getHost()
-									: "") + "'," + eventEntry.getEventDuration()
-							+ ",'true'";
-					String insertStatement = "INSERT INTO EVENTENTRIES (id,type,host,eventduration,alert) "
-							+ values + ");";
-					prep = conn.prepareCall(insertStatement);
-					// Close the PreparedStatement
-					prep.close();
-				}
-				logger.info("Data inserted succcessfully");
+		Statement stat = conn.createStatement();
+		PreparedStatement prep = null;
+		String sql = "CREATE TABLE EVENTENTRIES (id varchar(255), "
+				+ " type varchar(255), host varchar(255), eventduration bigint," + " alert varchar(10));";
+		if (tableExists("EVENTENTRIES", conn)) {
+			logger.info("In class EventEntryDAOImpl :: method fillFileEvents :: dropping table, will create again");
+			stat.executeUpdate("DROP TABLE EVENTENTRIES");
+		}
+		stat.executeUpdate(sql);
+		// Close the Statement object, it is no longer used
+		stat.close();
+		for (EventEntries eventEntry : listEventEntries) {
+			String values = "VALUES ('" + eventEntry.getId() + "', '"
+					+ (eventEntry.getType() != null ? eventEntry.getType() : "") + "','"
+					+ (eventEntry.getHost() != null ? eventEntry.getHost() : "") + "'," + eventEntry.getEventDuration()
+					+ ",'true'";
+			String insertStatement = "INSERT INTO EVENTENTRIES (id,type,host,eventduration,alert) " + values + ");";
+			prep = conn.prepareCall(insertStatement);
+			prep.executeUpdate();
+			selectAll(conn);
+			prep.close();
+		}
+		logger.info("Data inserted succcessfully");
 	}
 
 	private boolean tableExists(String tableName, Connection conn) throws SQLException {
