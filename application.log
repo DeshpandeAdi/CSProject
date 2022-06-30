@@ -1,0 +1,531 @@
+2022-06-30 17:48:43,716 [main] INFO   c.c.a.l.LogReaderApplication - LogReaderApplication is starting
+2022-06-30 17:48:43,895 [restartedMain] INFO   c.c.a.l.LogReaderApplication - LogReaderApplication is starting
+2022-06-30 17:48:44,210 [restartedMain] INFO   c.c.a.l.LogReaderApplication - Starting LogReaderApplication using Java 1.8.0_131 on admin-PC with PID 7976 (E:\logReader\logReader\target\classes started by admin in E:\logReader\logReader)
+2022-06-30 17:48:44,212 [restartedMain] INFO   c.c.a.l.LogReaderApplication - No active profile set, falling back to 1 default profile: "default"
+2022-06-30 17:48:44,291 [restartedMain] INFO   o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-06-30 17:48:44,292 [restartedMain] INFO   o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-06-30 17:48:45,499 [restartedMain] INFO   o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2022-06-30 17:48:45,514 [restartedMain] INFO   o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2022-06-30 17:48:45,514 [restartedMain] INFO   o.a.catalina.core.StandardService - Starting service [Tomcat]
+2022-06-30 17:48:45,515 [restartedMain] INFO   o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.64]
+2022-06-30 17:48:45,604 [restartedMain] INFO   o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-06-30 17:48:45,604 [restartedMain] INFO   o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1312 ms
+2022-06-30 17:48:46,038 [restartedMain] INFO   o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2022-06-30 17:48:46,051 [restartedMain] INFO   o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2022-06-30 17:48:46,072 [restartedMain] INFO   o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2022-06-30 17:48:46,084 [restartedMain] INFO   c.c.a.l.LogReaderApplication - Started LogReaderApplication in 2.185 seconds (JVM running for 2.664)
+2022-06-30 17:48:46,088 [restartedMain] INFO   com.cs.app.logReader.LogFileReader - In LogFileReader class :: readFileAsInput method :: User to input file name
+2022-06-30 17:48:51,826 [restartedMain] INFO   com.cs.app.logReader.LogFileReader - In LogFileReader class :: readFileAsInput method :: Start reading user file :: FileName :: logfile.txt
+2022-06-30 17:48:51,831 [restartedMain] INFO   c.c.a.l.utils.FileParsingHelper - In class FileParsingHelper :: method parseFile :: Start file parsing
+2022-06-30 17:48:51,981 [restartedMain] INFO   c.c.a.l.dao.impl.EventEntryDAOImpl - In class EventEntryDAOImpl :: method saveEventEntries :: start getting DB configs
+2022-06-30 17:48:52,241 [restartedMain] INFO   hsqldb.db.HSQLDB81B48CC0C7.ENGINE - Checkpoint start
+2022-06-30 17:48:52,241 [restartedMain] INFO   hsqldb.db.HSQLDB81B48CC0C7.ENGINE - checkpointClose start
+2022-06-30 17:48:52,272 [restartedMain] INFO   hsqldb.db.HSQLDB81B48CC0C7.ENGINE - checkpointClose synched
+2022-06-30 17:48:52,313 [restartedMain] INFO   hsqldb.db.HSQLDB81B48CC0C7.ENGINE - checkpointClose script done
+2022-06-30 17:48:52,435 [restartedMain] INFO   hsqldb.db.HSQLDB81B48CC0C7.ENGINE - checkpointClose end
+2022-06-30 17:48:52,437 [restartedMain] INFO   hsqldb.db.HSQLDB81B48CC0C7.ENGINE - Checkpoint end - txts: 1
+2022-06-30 17:48:52,484 [restartedMain] ERROR  c.c.a.l.dao.impl.EventEntryDAOImpl - Error while dropping table
+java.sql.SQLSyntaxErrorException: user lacks privilege or object not found: EVENTENTRIES in statement [DROP TABLE EventEntries]
+	at org.hsqldb.jdbc.JDBCUtil.sqlException(Unknown Source)
+	at org.hsqldb.jdbc.JDBCUtil.sqlException(Unknown Source)
+	at org.hsqldb.jdbc.JDBCStatement.fetchResult(Unknown Source)
+	at org.hsqldb.jdbc.JDBCStatement.executeUpdate(Unknown Source)
+	at com.cs.app.logReader.dao.impl.EventEntryDAOImpl.fillFileEvents(EventEntryDAOImpl.java:44)
+	at com.cs.app.logReader.dao.impl.EventEntryDAOImpl.saveEventEntries(EventEntryDAOImpl.java:30)
+	at com.cs.app.logReader.service.impl.LogEventProcessingServiceImpl.calculateTimeDuration(LogEventProcessingServiceImpl.java:76)
+	at com.cs.app.logReader.service.impl.LogEventProcessingServiceImpl.processLogEntries(LogEventProcessingServiceImpl.java:47)
+	at com.cs.app.logReader.LogFileReader.readFileAsInput(LogFileReader.java:27)
+	at com.cs.app.logReader.LogReaderApplication.main(LogReaderApplication.java:23)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: org.hsqldb.HsqlException: user lacks privilege or object not found: EVENTENTRIES
+	at org.hsqldb.error.Error.error(Unknown Source)
+	at org.hsqldb.error.Error.error(Unknown Source)
+	at org.hsqldb.StatementSchema.getResult(Unknown Source)
+	at org.hsqldb.StatementSchema.execute(Unknown Source)
+	at org.hsqldb.Session.executeCompiledStatement(Unknown Source)
+	at org.hsqldb.Session.executeDirectStatement(Unknown Source)
+	at org.hsqldb.Session.execute(Unknown Source)
+	... 13 common frames omitted
+2022-06-30 17:48:52,492 [restartedMain] ERROR  c.c.a.l.dao.impl.EventEntryDAOImpl - Caught error while saving entries :: 
+java.sql.SQLSyntaxErrorException: user lacks privilege or object not found: EVENTENTRIES in statement [INSERT INTO eventsDb.EVENTENTRIES (id,type,host,eventduration,alert) VALUES ('scsmbstgra', 'APPLICATION_LOG','12345',5,'true');]
+	at org.hsqldb.jdbc.JDBCUtil.sqlException(Unknown Source)
+	at org.hsqldb.jdbc.JDBCUtil.sqlException(Unknown Source)
+	at org.hsqldb.jdbc.JDBCPreparedStatement.<init>(Unknown Source)
+	at org.hsqldb.jdbc.JDBCCallableStatement.<init>(Unknown Source)
+	at org.hsqldb.jdbc.JDBCConnection.prepareCall(Unknown Source)
+	at com.cs.app.logReader.dao.impl.EventEntryDAOImpl.fillFileEvents(EventEntryDAOImpl.java:66)
+	at com.cs.app.logReader.dao.impl.EventEntryDAOImpl.saveEventEntries(EventEntryDAOImpl.java:30)
+	at com.cs.app.logReader.service.impl.LogEventProcessingServiceImpl.calculateTimeDuration(LogEventProcessingServiceImpl.java:76)
+	at com.cs.app.logReader.service.impl.LogEventProcessingServiceImpl.processLogEntries(LogEventProcessingServiceImpl.java:47)
+	at com.cs.app.logReader.LogFileReader.readFileAsInput(LogFileReader.java:27)
+	at com.cs.app.logReader.LogReaderApplication.main(LogReaderApplication.java:23)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: org.hsqldb.HsqlException: user lacks privilege or object not found: EVENTENTRIES
+	at org.hsqldb.error.Error.error(Unknown Source)
+	at org.hsqldb.error.Error.error(Unknown Source)
+	at org.hsqldb.ParserDQL.readTableName(Unknown Source)
+	at org.hsqldb.ParserDQL.readRangeVariableForDataChange(Unknown Source)
+	at org.hsqldb.ParserDML.compileInsertStatement(Unknown Source)
+	at org.hsqldb.ParserCommand.compilePart(Unknown Source)
+	at org.hsqldb.ParserCommand.compileStatement(Unknown Source)
+	at org.hsqldb.Session.compileStatement(Unknown Source)
+	at org.hsqldb.StatementManager.compile(Unknown Source)
+	at org.hsqldb.Session.execute(Unknown Source)
+	... 14 common frames omitted
+2022-06-30 17:54:01,126 [main] INFO   c.c.a.l.LogReaderApplication - LogReaderApplication is starting
+2022-06-30 17:54:01,476 [restartedMain] INFO   c.c.a.l.LogReaderApplication - LogReaderApplication is starting
+2022-06-30 17:54:01,905 [restartedMain] INFO   c.c.a.l.LogReaderApplication - Starting LogReaderApplication using Java 1.8.0_131 on admin-PC with PID 9864 (E:\logReader\logReader\target\classes started by admin in E:\logReader\logReader)
+2022-06-30 17:54:01,906 [restartedMain] INFO   c.c.a.l.LogReaderApplication - No active profile set, falling back to 1 default profile: "default"
+2022-06-30 17:54:02,011 [restartedMain] INFO   o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-06-30 17:54:02,012 [restartedMain] INFO   o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-06-30 17:54:04,620 [restartedMain] INFO   o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2022-06-30 17:54:04,631 [restartedMain] INFO   o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2022-06-30 17:54:04,632 [restartedMain] INFO   o.a.catalina.core.StandardService - Starting service [Tomcat]
+2022-06-30 17:54:04,632 [restartedMain] INFO   o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.64]
+2022-06-30 17:54:04,804 [restartedMain] INFO   o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-06-30 17:54:04,804 [restartedMain] INFO   o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2792 ms
+2022-06-30 17:54:05,312 [restartedMain] WARN   o.s.b.d.a.OptionalLiveReloadServer - Unable to start LiveReload server
+2022-06-30 17:54:05,325 [restartedMain] INFO   o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2022-06-30 17:54:05,329 [restartedMain] WARN   o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 8080 is already in use
+2022-06-30 17:54:05,334 [restartedMain] INFO   o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8080"]
+2022-06-30 17:54:05,334 [restartedMain] INFO   o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2022-06-30 17:54:05,342 [restartedMain] INFO   o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2022-06-30 17:54:05,343 [restartedMain] INFO   o.a.coyote.http11.Http11NioProtocol - Destroying ProtocolHandler ["http-nio-8080"]
+2022-06-30 17:54:05,354 [restartedMain] INFO   o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2022-06-30 17:54:05,383 [restartedMain] ERROR  o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2022-06-30 17:54:35,933 [main] INFO   c.c.a.l.LogReaderApplication - LogReaderApplication is starting
+2022-06-30 17:54:36,310 [restartedMain] INFO   c.c.a.l.LogReaderApplication - LogReaderApplication is starting
+2022-06-30 17:54:37,121 [restartedMain] INFO   c.c.a.l.LogReaderApplication - Starting LogReaderApplication using Java 1.8.0_131 on admin-PC with PID 13704 (E:\logReader\logReader\target\classes started by admin in E:\logReader\logReader)
+2022-06-30 17:54:37,123 [restartedMain] INFO   c.c.a.l.LogReaderApplication - No active profile set, falling back to 1 default profile: "default"
+2022-06-30 17:54:37,586 [restartedMain] INFO   o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-06-30 17:54:37,586 [restartedMain] INFO   o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-06-30 17:54:38,842 [restartedMain] INFO   o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2022-06-30 17:54:38,853 [restartedMain] INFO   o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2022-06-30 17:54:38,854 [restartedMain] INFO   o.a.catalina.core.StandardService - Starting service [Tomcat]
+2022-06-30 17:54:38,854 [restartedMain] INFO   o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.64]
+2022-06-30 17:54:38,942 [restartedMain] INFO   o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-06-30 17:54:38,942 [restartedMain] INFO   o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1355 ms
+2022-06-30 17:54:39,412 [restartedMain] WARN   o.s.b.d.a.OptionalLiveReloadServer - Unable to start LiveReload server
+2022-06-30 17:54:39,424 [restartedMain] INFO   o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2022-06-30 17:54:39,428 [restartedMain] WARN   o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 8080 is already in use
+2022-06-30 17:54:39,432 [restartedMain] INFO   o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8080"]
+2022-06-30 17:54:39,433 [restartedMain] INFO   o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2022-06-30 17:54:39,440 [restartedMain] INFO   o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2022-06-30 17:54:39,441 [restartedMain] INFO   o.a.coyote.http11.Http11NioProtocol - Destroying ProtocolHandler ["http-nio-8080"]
+2022-06-30 17:54:39,450 [restartedMain] INFO   o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2022-06-30 17:54:39,476 [restartedMain] ERROR  o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2022-06-30 17:55:18,654 [main] INFO   c.c.a.l.LogReaderApplication - LogReaderApplication is starting
+2022-06-30 17:55:18,839 [restartedMain] INFO   c.c.a.l.LogReaderApplication - LogReaderApplication is starting
+2022-06-30 17:55:19,168 [restartedMain] INFO   c.c.a.l.LogReaderApplication - Starting LogReaderApplication using Java 1.8.0_131 on admin-PC with PID 7744 (E:\logReader\logReader\target\classes started by admin in E:\logReader\logReader)
+2022-06-30 17:55:19,169 [restartedMain] INFO   c.c.a.l.LogReaderApplication - No active profile set, falling back to 1 default profile: "default"
+2022-06-30 17:55:19,225 [restartedMain] INFO   o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-06-30 17:55:19,225 [restartedMain] INFO   o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-06-30 17:55:20,370 [restartedMain] INFO   o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2022-06-30 17:55:20,380 [restartedMain] INFO   o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2022-06-30 17:55:20,381 [restartedMain] INFO   o.a.catalina.core.StandardService - Starting service [Tomcat]
+2022-06-30 17:55:20,381 [restartedMain] INFO   o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.64]
+2022-06-30 17:55:20,452 [restartedMain] INFO   o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-06-30 17:55:20,452 [restartedMain] INFO   o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1225 ms
+2022-06-30 17:55:20,848 [restartedMain] INFO   o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2022-06-30 17:55:20,861 [restartedMain] INFO   o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2022-06-30 17:55:20,883 [restartedMain] INFO   o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2022-06-30 17:55:20,894 [restartedMain] INFO   c.c.a.l.LogReaderApplication - Started LogReaderApplication in 2.052 seconds (JVM running for 2.487)
+2022-06-30 17:55:20,899 [restartedMain] INFO   com.cs.app.logReader.LogFileReader - In LogFileReader class :: readFileAsInput method :: User to input file name
+2022-06-30 17:55:30,458 [restartedMain] INFO   com.cs.app.logReader.LogFileReader - In LogFileReader class :: readFileAsInput method :: Start reading user file :: FileName :: logfile.txt
+2022-06-30 17:55:30,462 [restartedMain] INFO   c.c.a.l.utils.FileParsingHelper - In class FileParsingHelper :: method parseFile :: Start file parsing
+2022-06-30 17:55:30,634 [restartedMain] INFO   c.c.a.l.dao.impl.EventEntryDAOImpl - In class EventEntryDAOImpl :: method saveEventEntries :: start getting DB configs
+2022-06-30 17:55:30,889 [restartedMain] INFO   hsqldb.db.HSQLDB81B48CC0C7.ENGINE - checkpointClose start
+2022-06-30 17:55:30,890 [restartedMain] INFO   hsqldb.db.HSQLDB81B48CC0C7.ENGINE - checkpointClose synched
+2022-06-30 17:55:30,930 [restartedMain] INFO   hsqldb.db.HSQLDB81B48CC0C7.ENGINE - checkpointClose script done
+2022-06-30 17:55:31,007 [restartedMain] INFO   hsqldb.db.HSQLDB81B48CC0C7.ENGINE - checkpointClose end
+2022-06-30 17:55:31,072 [restartedMain] ERROR  c.c.a.l.dao.impl.EventEntryDAOImpl - Caught error while saving entries :: 
+java.sql.SQLSyntaxErrorException: user lacks privilege or object not found: EVENTENTRIES in statement [INSERT INTO eventsDb.EVENTENTRIES (id,type,host,eventduration,alert) VALUES ('scsmbstgra', 'APPLICATION_LOG','12345',5,'true');]
+	at org.hsqldb.jdbc.JDBCUtil.sqlException(Unknown Source)
+	at org.hsqldb.jdbc.JDBCUtil.sqlException(Unknown Source)
+	at org.hsqldb.jdbc.JDBCPreparedStatement.<init>(Unknown Source)
+	at org.hsqldb.jdbc.JDBCCallableStatement.<init>(Unknown Source)
+	at org.hsqldb.jdbc.JDBCConnection.prepareCall(Unknown Source)
+	at com.cs.app.logReader.dao.impl.EventEntryDAOImpl.fillFileEvents(EventEntryDAOImpl.java:66)
+	at com.cs.app.logReader.dao.impl.EventEntryDAOImpl.saveEventEntries(EventEntryDAOImpl.java:30)
+	at com.cs.app.logReader.service.impl.LogEventProcessingServiceImpl.calculateTimeDuration(LogEventProcessingServiceImpl.java:76)
+	at com.cs.app.logReader.service.impl.LogEventProcessingServiceImpl.processLogEntries(LogEventProcessingServiceImpl.java:47)
+	at com.cs.app.logReader.LogFileReader.readFileAsInput(LogFileReader.java:27)
+	at com.cs.app.logReader.LogReaderApplication.main(LogReaderApplication.java:23)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: org.hsqldb.HsqlException: user lacks privilege or object not found: EVENTENTRIES
+	at org.hsqldb.error.Error.error(Unknown Source)
+	at org.hsqldb.error.Error.error(Unknown Source)
+	at org.hsqldb.ParserDQL.readTableName(Unknown Source)
+	at org.hsqldb.ParserDQL.readRangeVariableForDataChange(Unknown Source)
+	at org.hsqldb.ParserDML.compileInsertStatement(Unknown Source)
+	at org.hsqldb.ParserCommand.compilePart(Unknown Source)
+	at org.hsqldb.ParserCommand.compileStatement(Unknown Source)
+	at org.hsqldb.Session.compileStatement(Unknown Source)
+	at org.hsqldb.StatementManager.compile(Unknown Source)
+	at org.hsqldb.Session.execute(Unknown Source)
+	... 14 common frames omitted
+2022-06-30 17:56:02,094 [main] INFO   c.c.a.l.LogReaderApplication - LogReaderApplication is starting
+2022-06-30 17:56:02,432 [restartedMain] INFO   c.c.a.l.LogReaderApplication - LogReaderApplication is starting
+2022-06-30 17:56:02,847 [restartedMain] INFO   c.c.a.l.LogReaderApplication - Starting LogReaderApplication using Java 1.8.0_131 on admin-PC with PID 11856 (E:\logReader\logReader\target\classes started by admin in E:\logReader\logReader)
+2022-06-30 17:56:02,849 [restartedMain] INFO   c.c.a.l.LogReaderApplication - No active profile set, falling back to 1 default profile: "default"
+2022-06-30 17:56:02,968 [restartedMain] INFO   o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-06-30 17:56:02,969 [restartedMain] INFO   o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-06-30 17:56:04,295 [restartedMain] INFO   o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2022-06-30 17:56:04,307 [restartedMain] INFO   o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2022-06-30 17:56:04,307 [restartedMain] INFO   o.a.catalina.core.StandardService - Starting service [Tomcat]
+2022-06-30 17:56:04,307 [restartedMain] INFO   o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.64]
+2022-06-30 17:56:04,380 [restartedMain] INFO   o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-06-30 17:56:04,381 [restartedMain] INFO   o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1412 ms
+2022-06-30 17:56:04,835 [restartedMain] INFO   o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2022-06-30 17:56:04,849 [restartedMain] INFO   o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2022-06-30 17:56:04,877 [restartedMain] INFO   o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2022-06-30 17:56:04,892 [restartedMain] INFO   c.c.a.l.LogReaderApplication - Started LogReaderApplication in 2.437 seconds (JVM running for 3.17)
+2022-06-30 17:56:04,896 [restartedMain] INFO   com.cs.app.logReader.LogFileReader - In LogFileReader class :: readFileAsInput method :: User to input file name
+2022-06-30 17:56:11,466 [restartedMain] INFO   com.cs.app.logReader.LogFileReader - In LogFileReader class :: readFileAsInput method :: Start reading user file :: FileName :: logfile.txt
+2022-06-30 17:56:11,472 [restartedMain] INFO   c.c.a.l.utils.FileParsingHelper - In class FileParsingHelper :: method parseFile :: Start file parsing
+2022-06-30 17:56:11,645 [restartedMain] INFO   c.c.a.l.dao.impl.EventEntryDAOImpl - In class EventEntryDAOImpl :: method saveEventEntries :: start getting DB configs
+2022-06-30 17:57:07,321 [restartedMain] INFO   hsqldb.db.HSQLDB81B48CC0C7.ENGINE - checkpointClose start
+2022-06-30 17:57:07,322 [restartedMain] INFO   hsqldb.db.HSQLDB81B48CC0C7.ENGINE - checkpointClose synched
+2022-06-30 17:57:07,376 [restartedMain] INFO   hsqldb.db.HSQLDB81B48CC0C7.ENGINE - checkpointClose script done
+2022-06-30 17:57:07,454 [restartedMain] INFO   hsqldb.db.HSQLDB81B48CC0C7.ENGINE - checkpointClose end
+2022-06-30 18:01:20,233 [restartedMain] ERROR  c.c.a.l.dao.impl.EventEntryDAOImpl - Caught error while saving entries :: 
+java.sql.SQLSyntaxErrorException: user lacks privilege or object not found: EVENTENTRIES in statement [INSERT INTO eventsDb.EVENTENTRIES (id,type,host,eventduration,alert) VALUES ('scsmbstgra', 'APPLICATION_LOG','12345',5,'true');]
+	at org.hsqldb.jdbc.JDBCUtil.sqlException(Unknown Source)
+	at org.hsqldb.jdbc.JDBCUtil.sqlException(Unknown Source)
+	at org.hsqldb.jdbc.JDBCPreparedStatement.<init>(Unknown Source)
+	at org.hsqldb.jdbc.JDBCCallableStatement.<init>(Unknown Source)
+	at org.hsqldb.jdbc.JDBCConnection.prepareCall(Unknown Source)
+	at com.cs.app.logReader.dao.impl.EventEntryDAOImpl.fillFileEvents(EventEntryDAOImpl.java:66)
+	at com.cs.app.logReader.dao.impl.EventEntryDAOImpl.saveEventEntries(EventEntryDAOImpl.java:30)
+	at com.cs.app.logReader.service.impl.LogEventProcessingServiceImpl.calculateTimeDuration(LogEventProcessingServiceImpl.java:76)
+	at com.cs.app.logReader.service.impl.LogEventProcessingServiceImpl.processLogEntries(LogEventProcessingServiceImpl.java:47)
+	at com.cs.app.logReader.LogFileReader.readFileAsInput(LogFileReader.java:27)
+	at com.cs.app.logReader.LogReaderApplication.main(LogReaderApplication.java:23)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: org.hsqldb.HsqlException: user lacks privilege or object not found: EVENTENTRIES
+	at org.hsqldb.error.Error.error(Unknown Source)
+	at org.hsqldb.error.Error.error(Unknown Source)
+	at org.hsqldb.ParserDQL.readTableName(Unknown Source)
+	at org.hsqldb.ParserDQL.readRangeVariableForDataChange(Unknown Source)
+	at org.hsqldb.ParserDML.compileInsertStatement(Unknown Source)
+	at org.hsqldb.ParserCommand.compilePart(Unknown Source)
+	at org.hsqldb.ParserCommand.compileStatement(Unknown Source)
+	at org.hsqldb.Session.compileStatement(Unknown Source)
+	at org.hsqldb.StatementManager.compile(Unknown Source)
+	at org.hsqldb.Session.execute(Unknown Source)
+	... 14 common frames omitted
+2022-06-30 18:11:07,524 [main] INFO   c.c.a.l.LogReaderApplication - LogReaderApplication is starting
+2022-06-30 18:11:07,711 [restartedMain] INFO   c.c.a.l.LogReaderApplication - LogReaderApplication is starting
+2022-06-30 18:11:08,074 [restartedMain] INFO   c.c.a.l.LogReaderApplication - Starting LogReaderApplication using Java 1.8.0_131 on admin-PC with PID 11556 (E:\logReader\logReader\target\classes started by admin in E:\logReader\logReader)
+2022-06-30 18:11:08,075 [restartedMain] INFO   c.c.a.l.LogReaderApplication - No active profile set, falling back to 1 default profile: "default"
+2022-06-30 18:11:08,170 [restartedMain] INFO   o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-06-30 18:11:08,170 [restartedMain] INFO   o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-06-30 18:11:08,478 [restartedMain] INFO   c.c.a.l.LogReaderApplication - LogReaderApplication is starting
+2022-06-30 18:11:08,594 [restartedMain] INFO   c.c.a.l.LogReaderApplication - Starting LogReaderApplication using Java 1.8.0_131 on admin-PC with PID 11856 (E:\logReader\logReader\target\classes started by admin in E:\logReader\logReader)
+2022-06-30 18:11:08,594 [restartedMain] INFO   c.c.a.l.LogReaderApplication - No active profile set, falling back to 1 default profile: "default"
+2022-06-30 18:11:09,098 [restartedMain] INFO   o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2022-06-30 18:11:09,099 [restartedMain] INFO   o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2022-06-30 18:11:09,100 [restartedMain] INFO   o.a.catalina.core.StandardService - Starting service [Tomcat]
+2022-06-30 18:11:09,100 [restartedMain] INFO   o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.64]
+2022-06-30 18:11:09,875 [restartedMain] INFO   o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-06-30 18:11:09,876 [restartedMain] INFO   o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1274 ms
+2022-06-30 18:11:10,619 [restartedMain] INFO   o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2022-06-30 18:11:10,632 [restartedMain] INFO   o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2022-06-30 18:11:10,633 [restartedMain] INFO   o.a.catalina.core.StandardService - Starting service [Tomcat]
+2022-06-30 18:11:10,633 [restartedMain] INFO   o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.64]
+2022-06-30 18:11:10,729 [restartedMain] INFO   o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-06-30 18:11:10,730 [restartedMain] INFO   o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2559 ms
+2022-06-30 18:11:11,113 [restartedMain] INFO   o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2022-06-30 18:11:11,124 [restartedMain] INFO   o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2022-06-30 18:11:11,145 [restartedMain] INFO   o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2022-06-30 18:11:11,154 [restartedMain] INFO   c.c.a.l.LogReaderApplication - Started LogReaderApplication in 3.439 seconds (JVM running for 3.96)
+2022-06-30 18:11:11,157 [restartedMain] INFO   com.cs.app.logReader.LogFileReader - In LogFileReader class :: readFileAsInput method :: User to input file name
+2022-06-30 18:11:18,665 [main] INFO   c.c.a.l.LogReaderApplication - LogReaderApplication is starting
+2022-06-30 18:11:18,851 [restartedMain] INFO   c.c.a.l.LogReaderApplication - LogReaderApplication is starting
+2022-06-30 18:11:19,290 [restartedMain] INFO   c.c.a.l.LogReaderApplication - Starting LogReaderApplication using Java 1.8.0_131 on admin-PC with PID 10680 (E:\logReader\logReader\target\classes started by admin in E:\logReader\logReader)
+2022-06-30 18:11:19,291 [restartedMain] INFO   c.c.a.l.LogReaderApplication - No active profile set, falling back to 1 default profile: "default"
+2022-06-30 18:11:19,356 [restartedMain] INFO   o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-06-30 18:11:19,356 [restartedMain] INFO   o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-06-30 18:11:20,589 [restartedMain] INFO   o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2022-06-30 18:11:20,603 [restartedMain] INFO   o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2022-06-30 18:11:20,604 [restartedMain] INFO   o.a.catalina.core.StandardService - Starting service [Tomcat]
+2022-06-30 18:11:20,604 [restartedMain] INFO   o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.64]
+2022-06-30 18:11:20,692 [restartedMain] INFO   o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-06-30 18:11:20,692 [restartedMain] INFO   o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1335 ms
+2022-06-30 18:11:21,093 [restartedMain] INFO   o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2022-06-30 18:11:21,106 [restartedMain] INFO   o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2022-06-30 18:11:21,127 [restartedMain] INFO   o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2022-06-30 18:11:21,136 [restartedMain] INFO   c.c.a.l.LogReaderApplication - Started LogReaderApplication in 2.281 seconds (JVM running for 2.783)
+2022-06-30 18:11:21,139 [restartedMain] INFO   com.cs.app.logReader.LogFileReader - In LogFileReader class :: readFileAsInput method :: User to input file name
+2022-06-30 18:11:28,498 [restartedMain] INFO   com.cs.app.logReader.LogFileReader - In LogFileReader class :: readFileAsInput method :: Start reading user file :: FileName :: logfile.txt
+2022-06-30 18:11:28,503 [restartedMain] INFO   c.c.a.l.utils.FileParsingHelper - In class FileParsingHelper :: method parseFile :: Start file parsing
+2022-06-30 18:11:28,659 [restartedMain] INFO   c.c.a.l.dao.impl.EventEntryDAOImpl - In class EventEntryDAOImpl :: method saveEventEntries :: start getting DB configs
+2022-06-30 18:11:28,916 [restartedMain] INFO   hsqldb.db.HSQLDB81B48CC0C7.ENGINE - checkpointClose start
+2022-06-30 18:11:28,917 [restartedMain] INFO   hsqldb.db.HSQLDB81B48CC0C7.ENGINE - checkpointClose synched
+2022-06-30 18:11:28,964 [restartedMain] INFO   hsqldb.db.HSQLDB81B48CC0C7.ENGINE - checkpointClose script done
+2022-06-30 18:11:29,015 [restartedMain] INFO   hsqldb.db.HSQLDB81B48CC0C7.ENGINE - checkpointClose end
+2022-06-30 18:11:29,030 [restartedMain] INFO   c.c.a.l.dao.impl.EventEntryDAOImpl - Creating Events table
+2022-06-30 18:11:29,036 [restartedMain] ERROR  c.c.a.l.dao.impl.EventEntryDAOImpl - Caught error while saving entries :: 
+java.sql.SQLSyntaxErrorException: object name already exists: EVENTENTRIES in statement [CREATE TABLE EVENTENTRIES (id varchar(255),  type varchar(255), host varchar(255), eventduration bigint, alert varchar(10), primary key(id))]
+	at org.hsqldb.jdbc.JDBCUtil.sqlException(Unknown Source)
+	at org.hsqldb.jdbc.JDBCUtil.sqlException(Unknown Source)
+	at org.hsqldb.jdbc.JDBCStatement.fetchResult(Unknown Source)
+	at org.hsqldb.jdbc.JDBCStatement.executeUpdate(Unknown Source)
+	at com.cs.app.logReader.dao.impl.EventEntryDAOImpl.createEventsTable(EventEntryDAOImpl.java:79)
+	at com.cs.app.logReader.dao.impl.EventEntryDAOImpl.fillFileEvents(EventEntryDAOImpl.java:43)
+	at com.cs.app.logReader.dao.impl.EventEntryDAOImpl.saveEventEntries(EventEntryDAOImpl.java:30)
+	at com.cs.app.logReader.service.impl.LogEventProcessingServiceImpl.calculateTimeDuration(LogEventProcessingServiceImpl.java:76)
+	at com.cs.app.logReader.service.impl.LogEventProcessingServiceImpl.processLogEntries(LogEventProcessingServiceImpl.java:47)
+	at com.cs.app.logReader.LogFileReader.readFileAsInput(LogFileReader.java:27)
+	at com.cs.app.logReader.LogReaderApplication.main(LogReaderApplication.java:23)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: org.hsqldb.HsqlException: object name already exists: EVENTENTRIES
+	at org.hsqldb.error.Error.error(Unknown Source)
+	at org.hsqldb.error.Error.error(Unknown Source)
+	at org.hsqldb.SchemaObjectSet.checkAdd(Unknown Source)
+	at org.hsqldb.SchemaManager.checkSchemaObjectNotExists(Unknown Source)
+	at org.hsqldb.StatementSchema.setOrCheckObjectName(Unknown Source)
+	at org.hsqldb.StatementSchema.getResult(Unknown Source)
+	at org.hsqldb.StatementSchema.execute(Unknown Source)
+	at org.hsqldb.Session.executeCompiledStatement(Unknown Source)
+	at org.hsqldb.Session.executeDirectStatement(Unknown Source)
+	at org.hsqldb.Session.execute(Unknown Source)
+	... 14 common frames omitted
+2022-06-30 18:12:07,857 [main] INFO   c.c.a.l.LogReaderApplication - LogReaderApplication is starting
+2022-06-30 18:12:08,102 [restartedMain] INFO   c.c.a.l.LogReaderApplication - LogReaderApplication is starting
+2022-06-30 18:12:08,425 [restartedMain] INFO   c.c.a.l.LogReaderApplication - Starting LogReaderApplication using Java 1.8.0_131 on admin-PC with PID 12428 (E:\logReader\logReader\target\classes started by admin in E:\logReader\logReader)
+2022-06-30 18:12:08,426 [restartedMain] INFO   c.c.a.l.LogReaderApplication - No active profile set, falling back to 1 default profile: "default"
+2022-06-30 18:12:08,528 [restartedMain] INFO   o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-06-30 18:12:08,529 [restartedMain] INFO   o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-06-30 18:12:08,909 [restartedMain] INFO   c.c.a.l.LogReaderApplication - LogReaderApplication is starting
+2022-06-30 18:12:09,219 [restartedMain] INFO   c.c.a.l.LogReaderApplication - Starting LogReaderApplication using Java 1.8.0_131 on admin-PC with PID 10680 (E:\logReader\logReader\target\classes started by admin in E:\logReader\logReader)
+2022-06-30 18:12:09,219 [restartedMain] INFO   c.c.a.l.LogReaderApplication - No active profile set, falling back to 1 default profile: "default"
+2022-06-30 18:12:09,729 [restartedMain] INFO   o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2022-06-30 18:12:09,729 [restartedMain] INFO   o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2022-06-30 18:12:09,729 [restartedMain] INFO   o.a.catalina.core.StandardService - Starting service [Tomcat]
+2022-06-30 18:12:09,730 [restartedMain] INFO   o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.64]
+2022-06-30 18:12:09,740 [restartedMain] INFO   o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-06-30 18:12:09,740 [restartedMain] INFO   o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 512 ms
+2022-06-30 18:12:10,307 [restartedMain] INFO   o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2022-06-30 18:12:10,320 [restartedMain] INFO   o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2022-06-30 18:12:10,337 [restartedMain] INFO   o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2022-06-30 18:12:10,343 [restartedMain] INFO   c.c.a.l.LogReaderApplication - Started LogReaderApplication in 1.428 seconds (JVM running for 51.99)
+2022-06-30 18:12:10,347 [restartedMain] INFO   o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2022-06-30 18:12:10,347 [restartedMain] INFO   com.cs.app.logReader.LogFileReader - In LogFileReader class :: readFileAsInput method :: User to input file name
+2022-06-30 18:12:10,564 [restartedMain] INFO   o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2022-06-30 18:12:10,574 [restartedMain] INFO   o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2022-06-30 18:12:10,575 [restartedMain] INFO   o.a.catalina.core.StandardService - Starting service [Tomcat]
+2022-06-30 18:12:10,575 [restartedMain] INFO   o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.64]
+2022-06-30 18:12:10,633 [restartedMain] INFO   o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-06-30 18:12:10,633 [restartedMain] INFO   o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2104 ms
+2022-06-30 18:12:11,039 [restartedMain] WARN   o.s.b.d.a.OptionalLiveReloadServer - Unable to start LiveReload server
+2022-06-30 18:12:11,052 [restartedMain] INFO   o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2022-06-30 18:12:11,056 [restartedMain] WARN   o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 8080 is already in use
+2022-06-30 18:12:11,061 [restartedMain] INFO   o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8080"]
+2022-06-30 18:12:11,061 [restartedMain] INFO   o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2022-06-30 18:12:11,068 [restartedMain] INFO   o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2022-06-30 18:12:11,068 [restartedMain] INFO   o.a.coyote.http11.Http11NioProtocol - Destroying ProtocolHandler ["http-nio-8080"]
+2022-06-30 18:12:11,075 [restartedMain] INFO   o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2022-06-30 18:12:11,090 [restartedMain] ERROR  o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2022-06-30 18:12:19,627 [main] INFO   c.c.a.l.LogReaderApplication - LogReaderApplication is starting
+2022-06-30 18:12:19,815 [restartedMain] INFO   c.c.a.l.LogReaderApplication - LogReaderApplication is starting
+2022-06-30 18:12:20,140 [restartedMain] INFO   c.c.a.l.LogReaderApplication - Starting LogReaderApplication using Java 1.8.0_131 on admin-PC with PID 12488 (E:\logReader\logReader\target\classes started by admin in E:\logReader\logReader)
+2022-06-30 18:12:20,141 [restartedMain] INFO   c.c.a.l.LogReaderApplication - No active profile set, falling back to 1 default profile: "default"
+2022-06-30 18:12:20,276 [restartedMain] INFO   o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-06-30 18:12:20,277 [restartedMain] INFO   o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-06-30 18:12:21,451 [restartedMain] INFO   o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2022-06-30 18:12:21,466 [restartedMain] INFO   o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2022-06-30 18:12:21,466 [restartedMain] INFO   o.a.catalina.core.StandardService - Starting service [Tomcat]
+2022-06-30 18:12:21,467 [restartedMain] INFO   o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.64]
+2022-06-30 18:12:21,562 [restartedMain] INFO   o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-06-30 18:12:21,562 [restartedMain] INFO   o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1285 ms
+2022-06-30 18:12:21,970 [restartedMain] INFO   o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2022-06-30 18:12:21,983 [restartedMain] INFO   o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2022-06-30 18:12:22,003 [restartedMain] INFO   o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2022-06-30 18:12:22,012 [restartedMain] INFO   c.c.a.l.LogReaderApplication - Started LogReaderApplication in 2.193 seconds (JVM running for 2.621)
+2022-06-30 18:12:22,015 [restartedMain] INFO   com.cs.app.logReader.LogFileReader - In LogFileReader class :: readFileAsInput method :: User to input file name
+2022-06-30 18:12:26,482 [restartedMain] INFO   com.cs.app.logReader.LogFileReader - In LogFileReader class :: readFileAsInput method :: Start reading user file :: FileName :: logfile.txt
+2022-06-30 18:12:26,487 [restartedMain] INFO   c.c.a.l.utils.FileParsingHelper - In class FileParsingHelper :: method parseFile :: Start file parsing
+2022-06-30 18:12:26,649 [restartedMain] INFO   c.c.a.l.dao.impl.EventEntryDAOImpl - In class EventEntryDAOImpl :: method saveEventEntries :: start getting DB configs
+2022-06-30 18:14:49,515 [main] INFO   c.c.a.l.LogReaderApplication - LogReaderApplication is starting
+2022-06-30 18:14:49,692 [restartedMain] INFO   c.c.a.l.LogReaderApplication - LogReaderApplication is starting
+2022-06-30 18:14:50,065 [restartedMain] INFO   c.c.a.l.LogReaderApplication - Starting LogReaderApplication using Java 1.8.0_131 on admin-PC with PID 3996 (E:\logReader\logReader\target\classes started by admin in E:\logReader\logReader)
+2022-06-30 18:14:50,067 [restartedMain] INFO   c.c.a.l.LogReaderApplication - No active profile set, falling back to 1 default profile: "default"
+2022-06-30 18:14:50,180 [restartedMain] INFO   c.c.a.l.LogReaderApplication - LogReaderApplication is starting
+2022-06-30 18:14:50,199 [restartedMain] INFO   o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-06-30 18:14:50,199 [restartedMain] INFO   o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-06-30 18:14:50,303 [restartedMain] INFO   c.c.a.l.LogReaderApplication - Starting LogReaderApplication using Java 1.8.0_131 on admin-PC with PID 12488 (E:\logReader\logReader\target\classes started by admin in E:\logReader\logReader)
+2022-06-30 18:14:50,303 [restartedMain] INFO   c.c.a.l.LogReaderApplication - No active profile set, falling back to 1 default profile: "default"
+2022-06-30 18:14:50,668 [restartedMain] INFO   o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2022-06-30 18:14:50,669 [restartedMain] INFO   o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2022-06-30 18:14:50,669 [restartedMain] INFO   o.a.catalina.core.StandardService - Starting service [Tomcat]
+2022-06-30 18:14:50,669 [restartedMain] INFO   o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.64]
+2022-06-30 18:14:50,769 [restartedMain] INFO   o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-06-30 18:14:50,769 [restartedMain] INFO   o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 459 ms
+2022-06-30 18:14:50,990 [restartedMain] INFO   o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2022-06-30 18:14:50,998 [restartedMain] INFO   o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2022-06-30 18:14:51,003 [restartedMain] INFO   o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2022-06-30 18:14:51,007 [restartedMain] INFO   c.c.a.l.LogReaderApplication - Started LogReaderApplication in 0.822 seconds (JVM running for 151.613)
+2022-06-30 18:14:51,009 [restartedMain] INFO   o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2022-06-30 18:14:51,009 [restartedMain] INFO   com.cs.app.logReader.LogFileReader - In LogFileReader class :: readFileAsInput method :: User to input file name
+2022-06-30 18:14:51,996 [restartedMain] INFO   o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2022-06-30 18:14:52,010 [restartedMain] INFO   o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2022-06-30 18:14:52,011 [restartedMain] INFO   o.a.catalina.core.StandardService - Starting service [Tomcat]
+2022-06-30 18:14:52,011 [restartedMain] INFO   o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.64]
+2022-06-30 18:14:52,099 [restartedMain] INFO   o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-06-30 18:14:52,099 [restartedMain] INFO   o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1899 ms
+2022-06-30 18:14:52,461 [restartedMain] WARN   o.s.b.d.a.OptionalLiveReloadServer - Unable to start LiveReload server
+2022-06-30 18:14:52,472 [restartedMain] INFO   o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2022-06-30 18:14:52,476 [restartedMain] WARN   o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 8080 is already in use
+2022-06-30 18:14:52,479 [restartedMain] INFO   o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8080"]
+2022-06-30 18:14:52,479 [restartedMain] INFO   o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2022-06-30 18:14:52,484 [restartedMain] INFO   o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2022-06-30 18:14:52,485 [restartedMain] INFO   o.a.coyote.http11.Http11NioProtocol - Destroying ProtocolHandler ["http-nio-8080"]
+2022-06-30 18:14:52,493 [restartedMain] INFO   o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2022-06-30 18:14:52,512 [restartedMain] ERROR  o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2022-06-30 18:15:00,456 [main] INFO   c.c.a.l.LogReaderApplication - LogReaderApplication is starting
+2022-06-30 18:15:00,681 [restartedMain] INFO   c.c.a.l.LogReaderApplication - LogReaderApplication is starting
+2022-06-30 18:15:01,012 [restartedMain] INFO   c.c.a.l.LogReaderApplication - Starting LogReaderApplication using Java 1.8.0_131 on admin-PC with PID 11732 (E:\logReader\logReader\target\classes started by admin in E:\logReader\logReader)
+2022-06-30 18:15:01,013 [restartedMain] INFO   c.c.a.l.LogReaderApplication - No active profile set, falling back to 1 default profile: "default"
+2022-06-30 18:15:01,086 [restartedMain] INFO   o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-06-30 18:15:01,086 [restartedMain] INFO   o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-06-30 18:15:02,268 [restartedMain] INFO   o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2022-06-30 18:15:02,284 [restartedMain] INFO   o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2022-06-30 18:15:02,284 [restartedMain] INFO   o.a.catalina.core.StandardService - Starting service [Tomcat]
+2022-06-30 18:15:02,284 [restartedMain] INFO   o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.64]
+2022-06-30 18:15:02,386 [restartedMain] INFO   o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-06-30 18:15:02,386 [restartedMain] INFO   o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1299 ms
+2022-06-30 18:15:02,757 [restartedMain] INFO   o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2022-06-30 18:15:02,771 [restartedMain] INFO   o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2022-06-30 18:15:02,792 [restartedMain] INFO   o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2022-06-30 18:15:02,803 [restartedMain] INFO   c.c.a.l.LogReaderApplication - Started LogReaderApplication in 2.117 seconds (JVM running for 2.618)
+2022-06-30 18:15:02,806 [restartedMain] INFO   com.cs.app.logReader.LogFileReader - In LogFileReader class :: readFileAsInput method :: User to input file name
+2022-06-30 18:15:08,772 [restartedMain] INFO   com.cs.app.logReader.LogFileReader - In LogFileReader class :: readFileAsInput method :: Start reading user file :: FileName :: logfile.txt
+2022-06-30 18:15:08,776 [restartedMain] INFO   c.c.a.l.utils.FileParsingHelper - In class FileParsingHelper :: method parseFile :: Start file parsing
+2022-06-30 18:15:08,926 [restartedMain] INFO   c.c.a.l.dao.impl.EventEntryDAOImpl - In class EventEntryDAOImpl :: method saveEventEntries :: start getting DB configs
+2022-06-30 18:15:09,226 [restartedMain] INFO   hsqldb.db.HSQLDB81B48CC0C7.ENGINE - checkpointClose start
+2022-06-30 18:15:09,226 [restartedMain] INFO   hsqldb.db.HSQLDB81B48CC0C7.ENGINE - checkpointClose synched
+2022-06-30 18:15:09,249 [restartedMain] INFO   hsqldb.db.HSQLDB81B48CC0C7.ENGINE - checkpointClose script done
+2022-06-30 18:15:09,302 [restartedMain] INFO   hsqldb.db.HSQLDB81B48CC0C7.ENGINE - checkpointClose end
+2022-06-30 18:15:09,359 [restartedMain] INFO   c.c.a.l.dao.impl.EventEntryDAOImpl - Data inserted succcessfully
+2022-06-30 20:14:10,584 [restartedMain] INFO   c.c.a.l.LogReaderApplication - LogReaderApplication is starting
+2022-06-30 20:14:11,371 [restartedMain] INFO   c.c.a.l.LogReaderApplication - Starting LogReaderApplication using Java 1.8.0_131 on admin-PC with PID 11732 (E:\logReader\logReader\target\classes started by admin in E:\logReader\logReader)
+2022-06-30 20:14:11,371 [restartedMain] INFO   c.c.a.l.LogReaderApplication - No active profile set, falling back to 1 default profile: "default"
+2022-06-30 20:14:12,558 [restartedMain] INFO   o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2022-06-30 20:14:12,559 [restartedMain] INFO   o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2022-06-30 20:14:12,559 [restartedMain] INFO   o.a.catalina.core.StandardService - Starting service [Tomcat]
+2022-06-30 20:14:12,559 [restartedMain] INFO   o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.64]
+2022-06-30 20:14:12,584 [restartedMain] INFO   o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-06-30 20:14:12,584 [restartedMain] INFO   o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1169 ms
+2022-06-30 20:14:12,725 [restartedMain] INFO   o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2022-06-30 20:14:12,730 [restartedMain] INFO   o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2022-06-30 20:14:12,770 [restartedMain] INFO   o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2022-06-30 20:14:12,774 [restartedMain] INFO   c.c.a.l.LogReaderApplication - Started LogReaderApplication in 2.111 seconds (JVM running for 7152.456)
+2022-06-30 20:14:12,779 [restartedMain] INFO   o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2022-06-30 20:14:12,780 [restartedMain] INFO   com.cs.app.logReader.LogFileReader - In LogFileReader class :: readFileAsInput method :: User to input file name
+2022-06-30 21:28:54,331 [main] INFO   c.c.a.l.LogReaderApplication - LogReaderApplication is starting
+2022-06-30 21:28:54,534 [restartedMain] INFO   c.c.a.l.LogReaderApplication - LogReaderApplication is starting
+2022-06-30 21:28:54,898 [restartedMain] INFO   c.c.a.l.LogReaderApplication - Starting LogReaderApplication using Java 1.8.0_131 on admin-PC with PID 8116 (E:\logReader\logReader\target\classes started by admin in E:\logReader\logReader)
+2022-06-30 21:28:54,899 [restartedMain] INFO   c.c.a.l.LogReaderApplication - No active profile set, falling back to 1 default profile: "default"
+2022-06-30 21:28:54,974 [restartedMain] INFO   o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-06-30 21:28:54,974 [restartedMain] INFO   o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-06-30 21:28:56,317 [restartedMain] INFO   o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2022-06-30 21:28:56,331 [restartedMain] INFO   o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2022-06-30 21:28:56,332 [restartedMain] INFO   o.a.catalina.core.StandardService - Starting service [Tomcat]
+2022-06-30 21:28:56,332 [restartedMain] INFO   o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.64]
+2022-06-30 21:28:56,400 [restartedMain] INFO   o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-06-30 21:28:56,400 [restartedMain] INFO   o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1426 ms
+2022-06-30 21:28:56,842 [restartedMain] INFO   o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2022-06-30 21:28:56,855 [restartedMain] INFO   o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2022-06-30 21:28:56,890 [restartedMain] INFO   o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2022-06-30 21:28:56,901 [restartedMain] INFO   c.c.a.l.LogReaderApplication - Started LogReaderApplication in 2.363 seconds (JVM running for 3.117)
+2022-06-30 21:28:56,904 [restartedMain] INFO   com.cs.app.logReader.LogFileReader - In LogFileReader class :: readFileAsInput method :: User to input file name
+2022-06-30 21:29:03,404 [restartedMain] INFO   c.c.a.l.s.i.LogEventProcessingServiceImpl - In LogEventProcessingServiceImpl class :: processLogEntries method :: Start reading user file :: FileName :: logfile.txt
+2022-06-30 21:29:03,408 [restartedMain] INFO   c.c.a.l.utils.FileParsingHelper - In class FileParsingHelper :: method parseFile :: Start file parsing
+2022-06-30 21:29:03,564 [restartedMain] INFO   c.c.a.l.s.i.LogEventProcessingServiceImpl - In class LogEventProcessingServiceImpl :: method calculateTimeDuration :: Start calculating events time duration
+2022-06-30 21:29:03,564 [restartedMain] INFO   c.c.a.l.dao.impl.EventEntryDAOImpl - In class EventEntryDAOImpl :: method saveEventEntries :: start getting DB configs
+2022-06-30 21:29:03,880 [restartedMain] INFO   hsqldb.db.HSQLDB81B48CC0C7.ENGINE - checkpointClose start
+2022-06-30 21:29:03,880 [restartedMain] INFO   hsqldb.db.HSQLDB81B48CC0C7.ENGINE - checkpointClose synched
+2022-06-30 21:29:03,928 [restartedMain] INFO   hsqldb.db.HSQLDB81B48CC0C7.ENGINE - checkpointClose script done
+2022-06-30 21:29:03,997 [restartedMain] INFO   hsqldb.db.HSQLDB81B48CC0C7.ENGINE - checkpointClose end
+2022-06-30 21:29:04,080 [restartedMain] INFO   c.c.a.l.dao.impl.EventEntryDAOImpl - Data inserted succcessfully
