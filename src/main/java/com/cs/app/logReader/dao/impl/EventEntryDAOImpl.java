@@ -42,7 +42,7 @@ public class EventEntryDAOImpl implements EventEntryDAO {
         logger.debug("Retrieving all DB entries in < EVENTENTRIES > table.");
         ResultSet resultSet = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY).executeQuery(getAll);
         while (resultSet.next()) {
-            logger.info("Alert value for EventID <" + resultSet.getString("id") + "> is :: " + resultSet.getString("alert"));
+            logger.debug("EventID :: <" + resultSet.getString("id") + "> || Alert Value :: " + resultSet.getString("alert"));
         }
     }
 	
@@ -51,7 +51,7 @@ public class EventEntryDAOImpl implements EventEntryDAO {
 		Statement stat = conn.createStatement();
 		PreparedStatement prep = null;
 		String sql = "CREATE TABLE EVENTENTRIES (id varchar(255), "
-				+ " type varchar(255), host varchar(255), eventduration bigint," + " alert varchar(10));";
+				+ " type varchar(255), host varchar(255), eventduration bigint," + " alert varchar(10), primary key(id));";
 		if (tableExists("EVENTENTRIES", conn)) {
 			logger.info("In class EventEntryDAOImpl :: method fillFileEvents :: dropping table, will create again");
 			stat.executeUpdate("DROP TABLE EVENTENTRIES");
